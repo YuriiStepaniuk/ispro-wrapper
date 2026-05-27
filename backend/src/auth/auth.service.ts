@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { IsProAuthService } from 'src/ispro/services/is-pro-auth.service';
 
 @Injectable()
 export class AuthService {
-  constructor() {}
+  constructor(private readonly isProAuthService: IsProAuthService) {}
 
-  async loginUser() {}
+  async login() {
+    await this.isProAuthService.getHeaders();
+  }
 }

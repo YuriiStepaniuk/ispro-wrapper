@@ -8,6 +8,8 @@ export const envValidationSchema = Joi.object({
 
   PORT: Joi.number().port().default(4000),
 
+  CLIENT_URL: Joi.string().uri().required(),
+
   // ── IsPro connection ─────────────────────────────────────────────────────────
   ISPRO_PORT: Joi.number().port().default(14000),
 
