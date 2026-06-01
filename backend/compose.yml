@@ -1,0 +1,16 @@
+services:
+  backend:
+    image: ghcr.io/YuriiStepaniuk/ispro-wrapper/backend:latest
+    env_file: .env
+    ports:
+      - '4000:4000'
+    restart: unless-stopped
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      WATCHTOWER_CLEANUP: 'true' # removes old images after pulling new ones
+      WATCHTOWER_POLL_INTERVAL: '30' # checks for new image every 30 seconds
+    restart: unless-stopped
